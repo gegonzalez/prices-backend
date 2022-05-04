@@ -2,3 +2,16 @@ management:
   endpoints:
     web:
       base-path: /
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+        web-allow-others: false
