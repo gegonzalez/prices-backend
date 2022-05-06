@@ -5,10 +5,14 @@ management:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:mem:mydb;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
     driverClassName: org.h2.Driver
+    data: classpath:data.sql
   jpa:
+    defer-datasource-initialization: true
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    generate-ddl: true
   h2:
     console:
       enabled: true
