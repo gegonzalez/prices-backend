@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,8 +21,8 @@ public class PriceService {
 
     public Optional<Price> fetchPrice(int brandId, int productId, LocalDateTime applicationDate) {
         LOG.info(getMessage(brandId, productId, applicationDate));
-        List<Price> priceList = priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate);
-        return priceList.stream()
+        return priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate)
+                .stream()
                 .max(Comparator.comparing(Price::getPriority));
     }
 
