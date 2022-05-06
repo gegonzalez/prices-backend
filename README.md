@@ -8,3 +8,9 @@
 ## Recommended
 
 * [SdkMan](https://sdkman.io/)
+
+## Commands
+
+- `./gradlew bootRun`: Run the Application
+- `./gradlew test`: Run unit tests
+- `./gradlew integrationTest`: Run integration tests
