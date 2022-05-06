@@ -38,19 +38,19 @@ public class Price {
     private int priority;
 
     @Column(nullable = false)
-    private float fare;
+    private float finalPrice;
 
     @Column(nullable = false)
     private String currency;
 
-    public Price(int brandId, LocalDateTime startDate, LocalDateTime endDate, int priceList, int productId, int priority, float fare, String currency) {
+    public Price(int brandId, LocalDateTime startDate, LocalDateTime endDate, int priceList, int productId, int priority, float finalPrice, String currency) {
         this.brandId = brandId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.priceList = priceList;
         this.productId = productId;
         this.priority = priority;
-        this.fare = fare;
+        this.finalPrice = finalPrice;
         this.currency = currency;
     }
 }

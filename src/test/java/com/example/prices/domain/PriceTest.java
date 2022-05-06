@@ -14,10 +14,10 @@ class PriceTest {
     private static final int PRICE_LIST = 100;
     private static final int PRODUCT_ID = 1234;
     private static final int PRIORITY = 1;
-    private static final float fare = Float.valueOf(999);
+    private static final float FINAL_PRICE = 999F;
     private static final String CURRENCY = "EUR";
 
-    private final Price price = new Price(BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, fare, CURRENCY);
+    private final Price price = new Price(BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, FINAL_PRICE, CURRENCY);
 
     @Test
     void shouldGetPriceCorrectly() {
@@ -27,7 +27,7 @@ class PriceTest {
         assertThat(price.getPriceList(), is(PRICE_LIST));
         assertThat(price.getProductId(), is(PRODUCT_ID));
         assertThat(price.getPriority(), is(PRIORITY));
-        assertThat(price.getFare(), is(fare));
+        assertThat(price.getFinalPrice(), is(FINAL_PRICE));
         assertThat(price.getCurrency(), is(CURRENCY));
     }
 }
