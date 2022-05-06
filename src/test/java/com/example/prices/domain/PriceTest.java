@@ -9,8 +9,8 @@ import static org.hamcrest.Matchers.is;
 
 class PriceTest {
     private static final int BRAND_ID = 1;
-    public static final LocalDateTime START_DATE = LocalDateTime.parse("2020-06-14T00:00:00");
-    public static final LocalDateTime END_DATE = LocalDateTime.parse("2020-12-31T23:59:59");
+    private static final LocalDateTime START_DATE = LocalDateTime.parse("2020-06-14T00:00:00");
+    private static final LocalDateTime END_DATE = LocalDateTime.parse("2020-12-31T23:59:59");
     private static final int PRICE_LIST = 100;
     private static final int PRODUCT_ID = 1234;
     private static final int PRIORITY = 1;

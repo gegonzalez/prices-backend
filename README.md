@@ -14,3 +14,8 @@
 - `./gradlew bootRun`: Run the Application
 - `./gradlew test`: Run unit tests
 - `./gradlew integrationTest`: Run integration tests
+
+## How to use
+
+- Run the command `./gradlew bootRun`
+- Execute `curl localhost:8080/prices/1/35455/2020-12-31T23:59:59` in another console
