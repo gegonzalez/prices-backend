@@ -19,3 +19,5 @@
 
 - Run the command `./gradlew bootRun`
 - Execute `curl localhost:8080/prices/1/35455/2020-12-31T23:59:59` in another console
+
+There is an [Open API Specification](https://github.com/gegonzalez/prices-backend/blob/main/docs/openapi.yaml)

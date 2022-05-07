@@ -4,7 +4,7 @@ info:
     version: 1.0.0
 servers:
     -
-        url: 'http://localhost.com:8080/'
+        url: 'http://localhost.com:8080'
         description: local development
 paths:
     '/prices/{brandId}/{productId}/{applicationDate}':
