@@ -1,0 +1,142 @@
+openapi: 3.0.2
+info:
+    title: Prices API
+    version: 1.0.0
+servers:
+    -
+        url: 'http://localhost.com:8080/'
+        description: local development
+paths:
+    '/prices/{brandId}/{productId}/{applicationDate}':
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/priceResponse'
+                            examples:
+                                price response:
+                                    value:
+                                        brandId: 1
+                                        startDate: '2020-06-15T16:00:00'
+                                        endDate: '2020-12-31T23:59:59'
+                                        priceList: 4
+                                        productId: 35455
+                                        finalPrice: 38.95
+                                        currency: EUR
+                    description: Handle prices
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                            examples:
+                                price not found example:
+                                    value:
+                                        timestamp: '2022-05-07T02:16:09.546+00:00'
+                                        status: 404
+                                        error: NOT FOUND
+                                        message: some text
+                                        path: some text
+                    description: price not found
+        parameters:
+            -
+                examples:
+                    brandIdExample:
+                        value: '666'
+                name: brandId
+                schema:
+                    type: integer
+                in: path
+                required: true
+            -
+                examples:
+                    productIdExample:
+                        value: '999'
+                name: productId
+                schema:
+                    type: integer
+                in: path
+                required: true
+            -
+                examples:
+                    applicationDateExample:
+                        value: '2020-12-31T10:10'
+                name: applicationDate
+                schema:
+                    type: string
+                in: path
+                required: true
+    /health:
+        description: health endpoint
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: string
+                            examples:
+                                health example:
+                                    value:
+                                        status: UP
+                    description: health check
+components:
+    schemas:
+        priceResponse:
+            title: Root Type for priceResponse
+            description: '    '
+            type: object
+            properties:
+                brandId:
+                    format: int32
+                    type: integer
+                startDate:
+                    format: date-time
+                    type: string
+                endDate:
+                    format: date-time
+                    type: string
+                priceList:
+                    format: int32
+                    type: integer
+                productId:
+                    format: int32
+                    type: integer
+                finalPrice:
+                    format: double
+                    type: number
+                currency:
+                    type: string
+            example:
+                brandId: 1
+                startDate: '2020-06-15T16:00:00'
+                endDate: '2020-12-31T23:59:59'
+                priceList: 4
+                productId: 35455
+                finalPrice: 38.95
+                currency: EUR
+        errorResponse:
+            title: Root Type for errorResponse
+            description: standard error response
+            type: object
+            properties:
+                timestamp:
+                    format: date-time
+                    type: string
+                status:
+                    format: int32
+                    type: integer
+                error:
+                    type: string
+                message:
+                    type: string
+                path:
+                    type: string
+            example:
+                timestamp: '2022-05-07T02:16:09.546+00:00'
+                status: 404
+                error: Not Found
+                message: No message available
+                path: /healthf
