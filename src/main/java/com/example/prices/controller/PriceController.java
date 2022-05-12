@@ -6,7 +6,6 @@ import com.example.prices.service.PriceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,17 +23,14 @@ public class PriceController {
 
     private static final Logger LOG = LoggerFactory.getLogger(PriceController.class);
 
-    @GetMapping("{brandId}/{productId}/{application-date}")
+    @GetMapping("{brandId}/{productId}/{applicationDate}")
     public ResponseEntity<PriceResponse> fetchPrice(@PathVariable("brandId") int brandId,
                                                     @PathVariable("productId") int productId,
-                                                    @PathVariable("application-date") String applicationDate) {
+                                                    @PathVariable("applicationDate") String applicationDate) {
         LOG.info(getMessage(brandId, productId, applicationDate));
         var priceResult = priceService.fetchPrice(brandId, productId, LocalDateTime.parse(applicationDate));
-        if (priceResult.isPresent()) {
-            LOG.info("status=success");
-            return ResponseEntity.ok(PriceResponseTransformer.from(priceResult.get()));
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        LOG.info("status=success");
+        return ResponseEntity.ok(PriceResponseTransformer.from(priceResult));
     }
 
     private String getMessage(int brandId, int productId, String applicationDate) {
