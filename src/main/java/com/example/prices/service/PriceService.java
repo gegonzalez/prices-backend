@@ -19,11 +19,13 @@ public class PriceService {
 
     private static final Logger LOG = LoggerFactory.getLogger(PriceService.class);
 
-    public Optional<Price> fetchPrice(int brandId, int productId, LocalDateTime applicationDate) {
+    public Price fetchPrice(int brandId, int productId, LocalDateTime applicationDate) {
         LOG.info(getMessage(brandId, productId, applicationDate));
-        return priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate)
-                .stream()
-                .max(Comparator.comparing(Price::getPriority));
+        return Optional.of(priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate)
+                        .stream()
+                        .max(Comparator.comparing(Price::getPriority))
+                        .orElseThrow())
+                .get();
     }
 
     private String getMessage(int brandId, int productId, LocalDateTime applicationDate) {

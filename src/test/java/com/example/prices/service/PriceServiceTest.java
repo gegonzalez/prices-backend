@@ -11,7 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.when;
@@ -30,8 +29,8 @@ class PriceServiceTest {
         when(priceRepository.findByProductIdAndBrandIdAndApplicationDate(BRAND_ID, PRODUCT_ID, APPLICATION_DATE))
                 .thenReturn(expectedPricesList);
 
-        Optional<Price> priceList = priceService.fetchPrice(BRAND_ID, PRODUCT_ID, APPLICATION_DATE);
+        Price priceList = priceService.fetchPrice(BRAND_ID, PRODUCT_ID, APPLICATION_DATE);
 
-        assertSame(expectedPricesList.get(0), priceList.get());
+        assertSame(expectedPricesList.get(0), priceList);
     }
 }
