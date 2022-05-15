@@ -27,13 +27,10 @@ public class PriceController {
     public ResponseEntity<PriceResponse> fetchPrice(@PathVariable("brandId") int brandId,
                                                     @PathVariable("productId") int productId,
                                                     @PathVariable("applicationDate") String applicationDate) {
-        LOG.info(getMessage(brandId, productId, applicationDate));
+        var message = String.format("action=fetchPrice, class=PriceController, brandId=%d, productId=%d, applicationDate=%s", brandId, productId, applicationDate);
+        LOG.info(message);
         var priceResult = priceService.fetchPrice(brandId, productId, LocalDateTime.parse(applicationDate));
         LOG.info("status=success");
         return ResponseEntity.ok(PriceResponseTransformer.from(priceResult));
-    }
-
-    private String getMessage(int brandId, int productId, String applicationDate) {
-        return String.format("action=fetchPrice, class=PriceController, brandId=%d, productId=%d, applicationDate=%s", brandId, productId, applicationDate);
     }
 }
