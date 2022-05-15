@@ -20,15 +20,13 @@ public class PriceService {
     private static final Logger LOG = LoggerFactory.getLogger(PriceService.class);
 
     public Price fetchPrice(int brandId, int productId, LocalDateTime applicationDate) {
-        LOG.info(getMessage(brandId, productId, applicationDate));
-        return Optional.of(priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate)
+        var message = String.format("action=fetchPrice, class=PriceService, brandId=%d, productId=%d, applicationDate=%s", brandId, productId, applicationDate.toString());
+        LOG.info(message);
+        var res = priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate);
+        return Optional.of(res
                         .stream()
                         .max(Comparator.comparing(Price::getPriority))
                         .orElseThrow())
                 .get();
-    }
-
-    private String getMessage(int brandId, int productId, LocalDateTime applicationDate) {
-        return String.format("action=fetchPrice, class=PriceService, brandId=%d, productId=%d, applicationDate=%s", brandId, productId, applicationDate.toString());
     }
 }
