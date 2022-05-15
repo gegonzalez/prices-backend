@@ -1,6 +1,6 @@
 package com.example.prices.data;
 
-import com.example.prices.domain.Price;
+import com.example.prices.entities.Price;
 
 import java.time.LocalDateTime;
 

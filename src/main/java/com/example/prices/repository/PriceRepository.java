@@ -1,6 +1,6 @@
 package com.example.prices.repository;
 
-import com.example.prices.domain.Price;
+import com.example.prices.entities.Price;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

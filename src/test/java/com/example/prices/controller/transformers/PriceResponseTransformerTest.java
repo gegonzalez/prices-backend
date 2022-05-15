@@ -1,6 +1,6 @@
 package com.example.prices.controller.transformers;
 
-import com.example.prices.domain.Price;
+import com.example.prices.entities.Price;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package com.example.prices.controller.transformers;
 
 import com.example.prices.controller.response.PriceResponse;
-import com.example.prices.domain.Price;
+import com.example.prices.entities.Price;
 
 public class PriceResponseTransformer {
     public static PriceResponse from(final Price price) {
