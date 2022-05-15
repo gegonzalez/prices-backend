@@ -1,7 +1,7 @@
 package com.example.prices.service;
 
 import com.example.prices.data.TestPrice;
-import com.example.prices.domain.Price;
+import com.example.prices.entities.Price;
 import com.example.prices.repository.PriceRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

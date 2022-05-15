@@ -1,6 +1,6 @@
 package com.example.prices.service;
 
-import com.example.prices.domain.Price;
+import com.example.prices.entities.Price;
 import com.example.prices.repository.PriceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

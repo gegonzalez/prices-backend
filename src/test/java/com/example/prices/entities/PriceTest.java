@@ -1,4 +1,4 @@
-package com.example.prices.domain;
+package com.example.prices.entities;
 
 import org.junit.jupiter.api.Test;
 
