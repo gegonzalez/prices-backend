@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
-import java.util.Optional;
 
 @Service
 public class PriceService {
@@ -23,10 +22,9 @@ public class PriceService {
         var message = String.format("action=fetchPrice, class=PriceService, brandId=%d, productId=%d, applicationDate=%s", brandId, productId, applicationDate.toString());
         LOG.info(message);
         var res = priceRepository.findByProductIdAndBrandIdAndApplicationDate(brandId, productId, applicationDate);
-        return Optional.of(res
-                        .stream()
-                        .max(Comparator.comparing(Price::getPriority))
-                        .orElseThrow())
-                .get();
+        return res
+                .stream()
+                .max(Comparator.comparing(Price::getPriority))
+                .orElseThrow();
     }
 }
