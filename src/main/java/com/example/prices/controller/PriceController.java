@@ -5,7 +5,6 @@ import com.example.prices.controller.transformers.PriceResponseTransformer;
 import com.example.prices.service.PriceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +16,12 @@ import java.time.LocalDateTime;
 @RequestMapping("/prices")
 @RestController
 public class PriceController {
-
-    @Autowired
-    private transient PriceService priceService;
-
     private static final Logger LOG = LoggerFactory.getLogger(PriceController.class);
+    private final PriceService priceService;
+
+    public PriceController(PriceService priceService) {
+        this.priceService = priceService;
+    }
 
     @GetMapping("{brandId}/{productId}/{applicationDate}")
     public ResponseEntity<PriceResponse> fetchPrice(@PathVariable("brandId") int brandId,
