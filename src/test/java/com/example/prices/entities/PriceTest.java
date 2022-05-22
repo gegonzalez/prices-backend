@@ -17,7 +17,7 @@ class PriceTest {
     private static final float FINAL_PRICE = 999F;
     private static final String CURRENCY = "EUR";
 
-    private final Price price = new Price(BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, FINAL_PRICE, CURRENCY);
+    private final transient Price price = new Price(BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, FINAL_PRICE, CURRENCY);
 
     @Test
     void shouldGetPriceCorrectly() {
