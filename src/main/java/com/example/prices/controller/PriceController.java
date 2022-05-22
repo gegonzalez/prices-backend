@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class PriceController {
 
     @Autowired
-    private PriceService priceService;
+    private transient PriceService priceService;
 
     private static final Logger LOG = LoggerFactory.getLogger(PriceController.class);
 

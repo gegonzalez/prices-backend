@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'jacoco'
+	id 'pmd'
 }
 
 group = 'com.example'
@@ -43,9 +45,16 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+test {
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+}
+
 task integrationTest(type: Test) {
 	useJUnitPlatform()
 	testClassesDirs = sourceSets.integrationTest.output
 	classpath = sourceSets.integrationTest.runtimeClasspath
 }
-
