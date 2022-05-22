@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -42,7 +43,14 @@ public class PriceControllerIntegrationTest extends BaseIntegrationTest {
     getMockMvc()
         .perform(get(PRICES_URL + pathParams)
                 .contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().is2xxSuccessful());
+            .andExpect(status().is2xxSuccessful())
+            .andExpect(jsonPath("$.brandId").value("1"))
+            .andExpect(jsonPath("$.startDate").exists())
+            .andExpect(jsonPath("$.endDate").exists())
+            .andExpect(jsonPath("$.priceList").value("4"))
+            .andExpect(jsonPath("$.productId").value("35455"))
+            .andExpect(jsonPath("$.finalPrice").exists())
+            .andExpect(jsonPath("$.currency").value("EUR"));
   }
 
   @Test
